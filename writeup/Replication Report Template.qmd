@@ -1,7 +1,6 @@
 ---
-title: "Replication of 'Does poverty promote a different and harmful way of thinking? THe links between economic scarcity, concrete construal level and risk behaviors' experiment 2 by Caballero et al. (2021, Current Psychology)"
-author: "Pilar Carrera
-(pilar.carrera@uam.es); Amparo Caballero (amparo.caballero@uam.es); Itziar Fernández (ifernandez@psi.uned.es); Pilar Aguilar (mpaguilar@uloyola.es); Dolores Muñoz (lola.munnoz@uam.es)
+title: "Replication of 'Does poverty promote a different and harmful way of thinking? The links between economic scarcity, concrete construal level and risk behaviors' experiment 2 by Caballero et al. (2021, Current Psychology)"
+author: "Pilar Carrera (pilar.carrera@uam.es); Amparo Caballero (amparo.caballero@uam.es); Itziar Fernández (ifernandez@psi.uned.es); Pilar Aguilar (mpaguilar@uloyola.es); Dolores Muñoz (lola.munnoz@uam.es)"
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 format:
   html:
@@ -23,101 +22,105 @@ This replication will follow Caballero et al. (2023) Study 2. The original sampl
 
 The procedure consisted of:
 1. **BIF (Pre-test):** 12 items from the Behavioral Identification Form, where each action (e.g., “locking a door”) is described at two levels: 1. a concrete “how” description (“putting the key in the lock”) and 2. an abstract “why” description (“securing the house”). Participants select which feels more natural.  
+
 2. **Economic-scarcity manipulation (fictional society):** Participants imagined living in a fictional society (Bimboola) organized by five income groups.  
    - **Scarcity condition:** assigned to the lowest income tier (≤ 400 Bimboolean per month) and required to choose items such as housing, transportation, and leisure from unattractive, low-resource options while viewing the better alternatives available to wealthier groups.  
    - **Non-scarcity condition:** assigned to a comfortable middle-income tier (1,201–3,000 Bimboolean) and made similar choices among adequate options.  
+
 3. **BIF (Post-test):** A second 12-item subset of the BIF  (non-overlapping with the pre-test) measured change in abstraction.  
+
 4. **Manipulation checks:** “My group is poor” and “My group is rich” on 7-point scales, plus an estimated group-income question.  
-5. **Demographics & debrief.**
+
+5. Basic demographic collection & debrief.
 
 **Challenges:**  
-One challenge in replicating this study include adapting the materials to an English-speaking Prolific population rather than the original Spanish-speaking undergraduate sample. Another challenge involves maintaining participant attention across both the pre- and post-manipulation Behavioral Identification Form (BIF) scales, which may induce some fatigue, especially in the second half. Finally, ensuring that the scarcity manipulation feels psychologically “real” in an online environment—without the presence of an experimenter—will be important for preserving the strength of the original effect that was does individually in cubicles. 
+One challenge in replicating this study include adapting the materials to an English-speaking Prolific population rather than the original Spanish-speaking undergraduate sample. Another challenge involves maintaining participant attention across both the pre and post-manipulation Behavioral Identification Form (BIF) scales, which may induce some fatigue, especially in the second half. Finally, ensuring that the scarcity manipulation feels psychologically real in an online environment without the presence of an experimenter (as was the case in the original study) will be important for preserving the strength of the original effect that was does individually in cubicles. 
 ---
 
 ### Links
-**Repository:https://github.com/psych251/caballero2021.git**  
-**Original Paper:https://github.com/psych251/caballero2021/blob/main/original_paper/caballero2021_original.pdf ** 
+**Repository:** https://github.com/psych251/caballero2021.git  
+**Original Paper:** https://github.com/psych251/caballero2021/blob/main/original_paper/caballero2021_original.pdf 
 
 
 
 
-## Methods
+<!-- ## Methods -->
 
-### Power Analysis
+<!-- ### Power Analysis -->
 
-Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
-
-
+<!-- Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size. -->
 
 
-### Planned Sample
-
-Planned sample size and/or termination rule, sampling frame, known demographics if any, preselection rules if any.
-
-### Materials
-
-All materials - can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article.
-
-### Procedure	
-
-Can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article.
-
-### Analysis Plan
-
-Can also quote directly, though it is less often spelled out effectively for an analysis strategy section.  The key is to report an analysis strategy that is as close to the original - data cleaning rules, data exclusion rules, covariates, etc. - as possible.  
-
-**Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do.
-
-### Differences from Original Study
-
-Explicitly describe known differences in sample, setting, procedure, and analysis plan from original study.  The goal, of course, is to minimize those differences, but differences will inevitably occur.  Also, note whether such differences are anticipated to make a difference based on claims in the original article or subsequent published research on the conditions for obtaining the effect.
-
-### Methods Addendum (Post Data Collection)
-
-You can comment this section out prior to final report with data collection.
-
-#### Actual Sample
-  Sample size, demographics, data exclusions based on rules spelled out in analysis plan
-
-#### Differences from pre-data collection methods plan
-  Any differences from what was described as the original plan, or “none”.
 
 
-## Results
+<!-- ### Planned Sample -->
+
+<!-- Planned sample size and/or termination rule, sampling frame, known demographics if any, preselection rules if any. -->
+
+<!-- ### Materials -->
+
+<!-- All materials - can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article. -->
+
+<!-- ### Procedure	 -->
+
+<!-- Can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article. -->
+
+<!-- ### Analysis Plan -->
+
+<!-- Can also quote directly, though it is less often spelled out effectively for an analysis strategy section.  The key is to report an analysis strategy that is as close to the original - data cleaning rules, data exclusion rules, covariates, etc. - as possible.   -->
+
+<!-- **Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do. -->
+
+<!-- ### Differences from Original Study -->
+
+<!-- Explicitly describe known differences in sample, setting, procedure, and analysis plan from original study.  The goal, of course, is to minimize those differences, but differences will inevitably occur.  Also, note whether such differences are anticipated to make a difference based on claims in the original article or subsequent published research on the conditions for obtaining the effect. -->
+
+<!-- ### Methods Addendum (Post Data Collection) -->
+
+<!-- You can comment this section out prior to final report with data collection. -->
+
+<!-- #### Actual Sample -->
+<!--   Sample size, demographics, data exclusions based on rules spelled out in analysis plan -->
+
+<!-- #### Differences from pre-data collection methods plan -->
+<!--   Any differences from what was described as the original plan, or “none”. -->
 
 
-### Data preparation
+<!-- ## Results -->
 
-Data preparation following the analysis plan.
-	
-```{r include=F}
-### Data Preparation
 
-#### Load Relevant Libraries and Functions
+<!-- ### Data preparation -->
 
-#### Import data
+<!-- Data preparation following the analysis plan. -->
 
-#### Data exclusion / filtering
+<!-- ```{r include=F} -->
+<!-- ### Data Preparation -->
 
-#### Prepare data for analysis - create columns etc.
-```
+<!-- #### Load Relevant Libraries and Functions -->
 
-### Confirmatory analysis
+<!-- #### Import data -->
 
-The analyses as specified in the analysis plan.  
+<!-- #### Data exclusion / filtering -->
 
-*Side-by-side graph with original graph is ideal here*
+<!-- #### Prepare data for analysis - create columns etc. -->
+<!-- ``` -->
 
-### Exploratory analyses
+<!-- ### Confirmatory analysis -->
 
-Any follow-up analyses desired (not required).  
+<!-- The analyses as specified in the analysis plan.   -->
 
-## Discussion
+<!-- *Side-by-side graph with original graph is ideal here* -->
 
-### Summary of Replication Attempt
+<!-- ### Exploratory analyses -->
 
-Open the discussion section with a paragraph summarizing the primary result from the confirmatory analysis and the assessment of whether it replicated, partially replicated, or failed to replicate the original result.  
+<!-- Any follow-up analyses desired (not required).   -->
 
-### Commentary
+<!-- ## Discussion -->
 
-Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long.
+<!-- ### Summary of Replication Attempt -->
+
+<!-- Open the discussion section with a paragraph summarizing the primary result from the confirmatory analysis and the assessment of whether it replicated, partially replicated, or failed to replicate the original result.   -->
+
+<!-- ### Commentary -->
+
+<!-- Add open-ended commentary (if any) reflecting (a) insights from follow-up exploratory analysis, (b) assessment of the meaning of the replication (or not) - e.g., for a failure to replicate, are the differences between original and present study ones that definitely, plausibly, or are unlikely to have been moderators of the result, and (c) discussion of any objections or challenges raised by the current and original authors about the replication attempt.  None of these need to be long. -->
