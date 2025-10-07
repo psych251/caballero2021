@@ -35,8 +35,8 @@ One challenge in replicating this study include adapting the materials to an Eng
 ---
 
 ### Links
-**Repository:**  
-**Original Paper:** 
+**Repository:https://github.com/psych251/caballero2021.git**  
+**Original Paper:https://github.com/psych251/caballero2021/blob/main/original_paper/caballero2021_original.pdf ** 
 
 
 
