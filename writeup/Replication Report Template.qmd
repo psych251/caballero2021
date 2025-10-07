@@ -1,6 +1,7 @@
 ---
-title: "Replication of Study X by Sample & Sample (20xx, Psychological Science)"
-author: "Replication Author[s] (contact information)"
+title: "Replication of 'Does poverty promote a different and harmful way of thinking? THe links between economic scarcity, concrete construal level and risk behaviors' experiment 2 by Caballero et al. (2021, Current Psychology)"
+author: "Pilar Carrera
+(pilar.carrera@uam.es); Amparo Caballero (amparo.caballero@uam.es); Itziar Fernández (ifernandez@psi.uned.es); Pilar Aguilar (mpaguilar@uloyola.es); Dolores Muñoz (lola.munnoz@uam.es)
 date: "`r format(Sys.time(), '%B %d, %Y')`"
 format:
   html:
@@ -12,7 +13,32 @@ format:
 
 ## Introduction
 
-[No abstract is needed.]  Each replication project will have a straightforward, no frills report of the study and results.  These reports will be publicly available as supplementary material for the aggregate report(s) of the project as a whole.  Also, to maximize project integrity, the intro and methods will be written and critiqued in advance of data collection.  Introductions can be just 1-2 paragraphs clarifying the main idea of the original study, the target finding for replication, and any other essential information.  It will NOT have a literature review -- that is in the original publication. You can write both the introduction and the methods in past tense.  
+### Justification
+I chose Caballero et al. (2023) Study 2 because it experimentally manipulates perceived economic scarcity to test how it shifts people’s construal level, or their tendency to think in concrete versus abstract terms. This focus on cognitive style and self-control under scarcity directly connects to my interests in the psychology of poverty, dignity, and institutional precarity. I am interested in how experiences of resource insecurity shape short-term versus long-term decision-making, and how interventions might target these different mindsets to help break individuals out of poverty cycles.
+
+Caballero et al. (2023) build on Construal Level Theory (Trope & Liberman, 2003), which proposes that psychological distance influences whether people think concretely or abstractly. In their Study 2, participants were randomly assigned to a “scarcity” or “non-scarcity” condition within a fictional society called Bimboola, and the researchers measured how this manipulation changed participants’ thinking styles using the Behavioral Identification Form (BIF). They found that those in the scarcity condition thought more concretely about actions and goals, confirming that perceived financial limitation causally narrows one’s cognitive focus to the immediate present.
+
+### Stimuli & Procedures
+This replication will follow Caballero et al. (2023) Study 2. The original sample included 120 undergraduate participants (102 women) who were randomly assigned to a scarcity or non-scarcity condition. All data were collected individually in lab cubicles via Qualtrics.
+
+The procedure consisted of:
+1. **BIF (Pre-test):** 12 items from the Behavioral Identification Form, where each action (e.g., “locking a door”) is described at two levels: 1. a concrete “how” description (“putting the key in the lock”) and 2. an abstract “why” description (“securing the house”). Participants select which feels more natural.  
+2. **Economic-scarcity manipulation (fictional society):** Participants imagined living in a fictional society (Bimboola) organized by five income groups.  
+   - **Scarcity condition:** assigned to the lowest income tier (≤ 400 Bimboolean per month) and required to choose items such as housing, transportation, and leisure from unattractive, low-resource options while viewing the better alternatives available to wealthier groups.  
+   - **Non-scarcity condition:** assigned to a comfortable middle-income tier (1,201–3,000 Bimboolean) and made similar choices among adequate options.  
+3. **BIF (Post-test):** A second 12-item subset of the BIF  (non-overlapping with the pre-test) measured change in abstraction.  
+4. **Manipulation checks:** “My group is poor” and “My group is rich” on 7-point scales, plus an estimated group-income question.  
+5. **Demographics & debrief.**
+
+**Challenges:**  
+One challenge in replicating this study include adapting the materials to an English-speaking Prolific population rather than the original Spanish-speaking undergraduate sample. Another challenge involves maintaining participant attention across both the pre- and post-manipulation Behavioral Identification Form (BIF) scales, which may induce some fatigue, especially in the second half. Finally, ensuring that the scarcity manipulation feels psychologically “real” in an online environment—without the presence of an experimenter—will be important for preserving the strength of the original effect that was does individually in cubicles. 
+---
+
+### Links
+**Repository:**  
+**Original Paper:** 
+
+
 
 
 ## Methods
@@ -20,6 +46,9 @@ format:
 ### Power Analysis
 
 Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size.
+
+
+
 
 ### Planned Sample
 
