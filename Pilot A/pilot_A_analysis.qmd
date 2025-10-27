@@ -1,0 +1,48 @@
+---
+title: 'Pilot A'
+author: "Morgan Tompkins"
+date: "October 26 2025"
+format: html
+---
+
+## Pilot A Confirmatory Analysis
+
+Link to survey: https://stanforduniversity.qualtrics.com/jfe/form/SV_9NahsFIiwV8fMfY 
+
+```{r}
+library(foreign) # for reading spss formatted data
+library(tidyr)
+library(dplyr)
+library(stringr) # useful for some string manipulation
+library(ggplot2)
+```
+
+### Read in data
+```{r}
+df = read.csv("PSYCH251_October 26, 2025_19.12.csv")
+head(df)
+```
+
+
+### Clean data
+```{r}
+df_select_var <- df %>%
+  filter(Status == "IP Address") %>%
+  select(ResponseId, starts_with("BIF"), starts_with("house"), starts_with("car"), starts_with("phone"), starts_with("vac"), bimboola_earn, group_construal_1, group_construal_2, age, gender, condition)
+
+colnames(df_select_var)
+nrow(df_select_var)
+head(df_select_var)
+```
+
+
+### Analysis
+- score participant's BIF responses for variables BIF 1-24 (abstract vs. concrete)
+- compute simple pre-test BIF score (BIF 1-12)
+- compute post-test BIF score (BIF 13-24)
+- sig differences between scarcity vs. sufficiency group (condition variable)
+- sig differences between demographics (gender, age)
+
+
+
+
