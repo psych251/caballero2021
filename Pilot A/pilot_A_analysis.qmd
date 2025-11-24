@@ -15,6 +15,7 @@ library(tidyr)
 library(dplyr)
 library(stringr) # useful for some string manipulation
 library(ggplot2)
+library(kableExtra)
 ```
 
 ### Read in data
@@ -28,21 +29,296 @@ head(df)
 ```{r}
 df_select_var <- df %>%
   filter(Status == "IP Address") %>%
-  select(ResponseId, starts_with("BIF"), starts_with("house"), starts_with("car"), starts_with("phone"), starts_with("vac"), bimboola_earn, group_construal_1, group_construal_2, age, gender, condition)
+  select(ResponseId, starts_with("BIF"), bimboola_earn, group_construal_1, group_construal_2, age, gender, condition)
 
 colnames(df_select_var)
 nrow(df_select_var)
 head(df_select_var)
 ```
 
-
 ### Analysis
-- score participant's BIF responses for variables BIF 1-24 (abstract vs. concrete)
-- compute simple pre-test BIF score (BIF 1-12)
-- compute post-test BIF score (BIF 13-24)
-- sig differences between scarcity vs. sufficiency group (condition variable)
-- sig differences between demographics (gender, age)
+Create BIF dictionary
+```{r}
+# STEP 1: DEFINE BIF ITEM CODING (Mapping Item ID to Description)
+
+# The standard 25 BIF items. Assuming BIF_1 to BIF_24 are present in the user's data.
+bif_item_descriptions <- data.frame(
+  BIF_Item = paste0("BIF_", 1:25), # Corrected to 25 items
+  
+  Item_Topic = c(
+    "Organization", "Knowledge Acquisition", "Civic Duty/Defense", "Hygiene", "Nutrition/Consumption",
+    "Resource Acquisition", "Home Improvement", "Housekeeping", "Painting", "Housing Maintenance",
+    "Gardening", "Security", "Civic Duty", "Recreation", "Self-Reflection",
+    "Dental Health", "Assessment", "Social Interaction", "Self-Control", "Eating/Physiology",
+    "Gardening/Exercise", "Transportation", "Health Appointment", "Child Interaction", "Social Contact"
+  ),
+  
+  # The exact text of the CONCRETE (0) choice based on user's list
+  Concrete_Choice = c(
+    "Writing things down",                   # BIF 1: Writing things down (b)
+    "Following lines of print",             # BIF 2: Following lines of print (a)
+    "Signing up",                           # BIF 3: Signing up (b)
+    "Putting clothes into the machine",     # BIF 4: Putting clothes into the machine (b)
+    "Pulling an apple off a branch",        # BIF 5: Pulling an apple off a branch (b)
+    "Wielding an axe",                      # BIF 6: Wielding an axe (a)
+    "Using a yardstick",                    # BIF 7: Using a yardstick (b)
+    "Vacuuming the floor",                  # BIF 8: Vacuuming the floor (b)
+    "Applying brush strokes",               # BIF 9: Applying brush strokes (a)
+    "Writing a check",                      # BIF 10: Writing a check (b)
+    "Watering plants",                      # BIF 11: Watering plants (a)
+    "Putting a key in the lock",            # BIF 12: Putting a key in the lock (a)
+    "Marking a ballot",                     # BIF 13: Marking a ballot (b)
+    "Holding on to branches",               # BIF 14: Holding on to branches (b)
+    "Answering questions",                  # BIF 15: Answering questions (a)
+    "Moving a brush around in one's mouth", # BIF 16: Moving a brush around in one's mouth (b)
+    "Answering questions",                  # BIF 17: Answering questions (a)
+    "Saying hellow",                         # BIF 18: Saying hello (a)
+    "Saying \"no\"",                        # BIF 19: Saying "no" (a)
+    "Chewing and swallowing",               # BIF 20: Chewing and swallowing (b)
+    "Planting seeds",                       # BIF 21: Planting seeds (a)
+    "Following a map",                      # BIF 22: Following a map (a)
+    "Going to the dentist",                 # BIF 23: Going to the dentist (b)
+    "Using simple words",                   # BIF 24: Using simple words (b)
+    "Moving a finger"                       # BIF 25: Moving a finger (a)
+  ),
+  
+  # The exact text of the ABSTRACT (1) choice based on user's list
+  Abstract_Choice = c(
+    "Getting organized",                    # BIF 1: Getting organized (a)
+    "Gaining knowledge",                    # BIF 2: Gaining knowledge (b)
+    "Helping the Nation's defense",         # BIF 3: Helping the Nation's defense (a)
+    "Removing odor from the clothes",          # BIF 4: Removing odors from clothes (a)
+    "Getting something to eat",             # BIF 5: Getting something to eat (a)
+    "Getting firewood",                     # BIF 6: Getting firewood (b)
+    "Getting ready to remodel",             # BIF 7: Getting ready to remodel (a)
+    "Showing one's cleanliness",            # BIF 8: Showing one's cleanliness (a)
+    "Making the room look fresh",           # BIF 9: Making the room look fresh (b)
+    "Maintaining a place to live",          # BIF 10: Maintaining a place to live (a)
+    "Making the room look fresh",            # BIF 11: Making the room look nice (b)
+    "Securing the house",                   # BIF 12: Securing the house (b)
+    "Influencing the election",             # BIF 13: Influencing the election (a)
+    "Getting a good view",                  # BIF 14: Getting a good view (a)
+    "Revealing what you're like",           # BIF 15: Revealing what you're like (b)
+    "Preventing tooth decay",               # BIF 16: Preventing tooth decay (a)
+    "Showing one's knowledge",              # BIF 17: Showing one's knowledge (b)
+    "Showing friendliness",                 # BIF 18: Showing friendliness (b)
+    "Showing moral courage",                # BIF 19: Showing moral courage (b)
+    "Getting nutrition",                    # BIF 20: Getting nutrition (a)
+    "Getting fresh vegetables",             # BIF 21: Getting fresh vegetables (b)
+    "Seeing countryside",                   # BIF 22: Seeing countryside (b)
+    "Protecting your teeth",                # BIF 23: Protecting your teeth (a)
+    "Teaching a child something",           # BIF 24: Teaching a child something (a)
+    "Seeing if someone's home"              # BIF 25: Seeing if someone's home (b)
+  ),
+  stringsAsFactors = FALSE
+) %>%
+  # Aggressively clean dictionary entries for reliable matching
+  mutate(
+    Concrete_Choice = str_trim(tolower(Concrete_Choice)),
+    Abstract_Choice = str_trim(tolower(Abstract_Choice))
+  )
+```
+
+Score participant's BIF responses for variables BIF 1-24 (abstract vs. concrete)
+```{r}
+# Select relevant data
+bif_counts_df <- df %>%
+  filter(Status == "IP Address") %>%
+  select(starts_with("BIF"), condition, ResponseId) %>%
+  
+  pivot_longer(
+    cols = starts_with("BIF"),
+    names_to = "BIF_Item",
+    values_to = "Choice" # 1 = Abstract, 0 = Concrete
+  ) %>%
+  mutate(
+    Choice = str_trim(tolower(Choice)), 
+    condition = str_trim(tolower(condition))
+  ) %>%
+  
+  left_join(bif_item_descriptions, by = "BIF_Item") %>%
+  
+  mutate(
+    abstract = case_when(
+     Choice == Abstract_Choice ~ 1, 
+     Choice == Concrete_Choice ~ 0,
+     TRUE ~ NA_real_ 
+    )
+  )
+  
+```
+
+Compute simple pre-test BIF score (BIF 1-12) & post-test BIF score (BIF 13-24)
+```{r}
+bif_pre_post_df <- bif_counts_df %>%
+  mutate(BIF_Index = as.numeric(str_replace(BIF_Item, "BIF_", ""))) %>%
+  group_by(ResponseId, condition) %>%
+  summarise(
+    pre_test_score = sum(abstract[BIF_Index < 12], na.rm = TRUE),
+    post_test_score = sum(abstract[BIF_Index >= 12 & BIF_Index <= 24], na.rm = TRUE),
+    .groups = 'drop') 
+  
+pre_post_summary_table <- bif_pre_post_df %>%
+  group_by(condition) %>%
+  summarise(
+  respondent_count = n(),  
+  pre_score_avg = round(mean(pre_test_score, na.rm = TRUE),1),
+  pre_score_sd = round(sd(pre_test_score, na.rm = TRUE),1),
+  post_score_avg = round(mean(post_test_score, na.rm = TRUE),1),
+  post_score_sd = round(sd(post_test_score, na.rm = TRUE),1),
+  .groups = 'drop'
+  )
+
+bif_summary_table_final <- pre_post_summary_table %>%
+  # 1. Start with kable (mandatory for kableExtra)
+  kable(
+    caption = "Item-Level Comparison of Abstract Choice Percentage by Condition",
+    align = "lcccrr",
+    digits = 1
+  ) %>%
+  # 2. Add the styling (striped effect comes from 'bootstrap_options')
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = FALSE
+  ) 
+
+```
+
+Viz
+
+## Results and Visualizations
+
+### Aggregate Mean Score Table
+
+This table summarizes the average abstract score for the pre-test (Max 12) and post-test (Max 12) phases for each experimental condition.
+
+```{r aggregate-kable}
+pre_post_summary_table %>%
+  select(condition, respondent_count, pre_score_avg, pre_score_sd, post_score_avg, post_score_sd) %>%
+  kable(
+    caption = "Aggregate Mean BIF Scores by Condition (Pre-Test Max=12, Post-Test Max=12)",
+    align = "lcccccc",
+    digits = 1, # Use user's requested rounding (1 decimal place)
+    col.names = c("Condition", "N", "Pre-Avg", "Pre-SD", "Post-Avg", "Post-SD")
+  ) %>%
+  # 2. Add the styling (striped effect comes from 'bootstrap_options')
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = FALSE
+  ) 
+```
+
+---
+
+### Visualization: Mean Abstract Scores
+
+This grouped bar chart displays the means and standard errors for the abstract BIF scores, illustrating the effect of the condition across the two measurement phases.
+
+```{r grouped-bar-chart, fig.height=5, fig.width=7}
+# --- 4a. Transform Summary Data to Long Format for Plotting ---
+pre_post_long_for_plot <- pre_post_summary_table %>%
+  # Select the RAW mean and SE columns for accurate plotting
+  select(condition, pre_score_mean_raw, post_score_mean_raw, pre_score_se, post_score_se) %>%
+  
+  # FIX: Use names_to = c("Test_Phase", ".value") and a pattern with two capture groups.
+  pivot_longer(
+    cols = -condition, 
+    names_to = c("Test_Phase", ".value"), 
+    # Group 1 captures 'pre' or 'post', Group 2 captures the metric ('mean_raw' or 'se')
+    names_pattern = "(pre|post)_score_(mean_raw|se)" 
+  ) %>%
+  
+  # Cleanup and factor the test phase for correct order on the X-axis
+  mutate(
+    # Test_Phase is already clean ("pre", "post") from the pivot, just capitalize for display.
+    Test_Phase = factor(str_to_title(Test_Phase), levels = c("Pre", "Post"), labels = c("Pre-Test", "Post-Test")),
+    condition = str_to_title(condition) 
+  ) %>%
+  # The pivot created columns named 'mean_raw' and 'se'. Rename them for clarity.
+  rename(Mean_Score = mean_raw, SE_Score = se)
+
+# --- 4b. Create Grouped Bar Plot with Error Bars ---
+pre_post_long_for_plot %>%
+  ggplot(aes(x = Test_Phase, y = Mean_Score, fill = condition)) +
+  # Draw the bars
+  geom_bar(stat = "identity", position = position_dodge(width = 0.9), color = "black") +
+  # Add the error bars (+/- 1 SE)
+  geom_errorbar(
+    aes(ymin = Mean_Score - SE_Score, ymax = Mean_Score + SE_Score), 
+    position = position_dodge(width = 0.9), 
+    width = 0.2, # Width of the caps on the error bars
+    linewidth = 0.8
+  ) +
+  # Customization
+  labs(
+    title = "Abstract BIF Score by Condition and Test Phase",
+    subtitle = "Mean Score",
+    y = "Mean Abstract BIF Score (Max 12)",
+    x = "Test Phase",
+    fill = "Condition"
+  ) +
+  # Apply a simpler, clean theme
+  theme_minimal(base_size = 14) +
+  # Use distinct, accessible colors
+  #scale_fill_manual(values = c("Scarcity" = "#D95F02", "Nonscarcity" = "#1B9E77")) +
+  # Ensure Y-axis is set to max score for context
+  coord_cartesian(ylim = c(0, 12)) +
+  theme(legend.position = "bottom")
+
+```
+
+---
+
+### Item-Level Comparison Table
+
+This table shows the percentage of abstract choices for each BIF item, which allows for examination of item-level effects between the conditions.
+
+```{r item-level-kable}
+# --- 3c. ITEM-BY-ITEM COMPARISON (Calculate abstract choice percentage per item/condition) ---
+bif_counts_prepped <- bif_counts_df %>%
+  filter(BIF_Item != "BIF_25") %>% # Exclude BIF_25 since it's not part of pre/post
+  group_by(condition, BIF_Item) %>%
+  summarise(
+    Abstract_Count = sum(abstract, na.rm = TRUE), 
+    Total_N_Condition = n(), 
+    .groups = 'drop_last'
+  ) %>%
+  ungroup() %>%
+  mutate(Abstract_Prcnt = (Abstract_Count / Total_N_Condition) * 100)
+
+scarcity_data <- bif_counts_prepped %>% filter(condition == "scarcity") %>% select(BIF_Item, Prcnt_Scarcity = Abstract_Prcnt)
+nonscarcity_data <- bif_counts_prepped %>% filter(condition == "nonscarcity") %>% select(BIF_Item, Prcnt_Nonscarcity = Abstract_Prcnt)
+
+bif_summary_table_final_item_level <- full_join(scarcity_data, nonscarcity_data, by = "BIF_Item") %>%
+  left_join(
+    bif_item_descriptions %>% select(BIF_Item, Item_Topic, Concrete_Choice, Abstract_Choice), 
+    by = "BIF_Item"
+  ) %>%
+  mutate(
+    Prcnt_Scarcity = coalesce(Prcnt_Scarcity, 0),
+    Prcnt_Nonscarcity = coalesce(Prcnt_Nonscarcity, 0),
+    Difference = Prcnt_Nonscarcity - Prcnt_Scarcity
+  ) %>%
+  select(
+    BIF_Item, Item_Topic, Prcnt_Scarcity, 
+    Prcnt_Nonscarcity, Difference, Concrete_Choice, Abstract_Choice
+  ) %>%
+  arrange(desc(Difference))
 
 
-
+bif_summary_table_final_item_level %>%
+  select(-Concrete_Choice, -Abstract_Choice) %>%
+  kable(
+    caption = "Item-Level Comparison of Abstract Choice Percentage by Condition",
+    align = "lcccrr",
+    digits = 2,
+    col.names = c("BIF Item", "Topic", "% Scarcity", "% Nonscarcity", "Difference (NS-S)")
+  ) %>%
+  kable_styling(
+    bootstrap_options = c("striped", "hover", "condensed", "responsive"),
+    full_width = FALSE
+  ) %>%
+  add_header_above(
+    c(" " = 2, "Abstract Choice Percentage" = 2, " " = 1)
+  )
 

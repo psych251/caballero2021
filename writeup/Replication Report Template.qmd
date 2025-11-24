@@ -44,36 +44,63 @@ One challenge in replicating this study include adapting the materials to an Eng
 
 
 
-<!-- ## Methods -->
+## Methods
 
-<!-- ### Power Analysis -->
+### Power Analysis 
+This study relied on an effect size consistent with prior work on economic scarcity and unhealthy behavior (medium effect, f = 0.30; Bratanova et al., 2016; Laran & Salerno, 2013). Power analyses conducted with G*Power indicated that, to detect this effect with 80% power at α = .05, the required sample sizes were N = 90 for designs with two conditions.
 
-<!-- Original effect size, power analysis for samples to achieve 80%, 90%, 95% power to detect that effect size.  Considerations of feasibility for selecting planned sample size. -->
+Recruitment followed the practical constraints of the lab schedule: once the target sample sizes identified by the power analysis were reached, data collection continued through the full two-week period during which lab space had been allocated. The Study 3 sample reflected voluntary participation by students enrolled in a psychology course as part of a larger survey effort. All measures, manipulations, and exclusions were fully disclosed.
+
+### Planned Sample 
+Participants will be recruited to reach the planned sample size of N = 72, based on a power analysis targeting 80% power to detect the original effect size (f = 0.33) reported by Caballero et al. (2021). The study uses a questionnaire format and corresponds to Experiment 2 in the original paper. Data collection will end once the planned sample size is reached. There are no preregistered materials or open data associated with the original study. The original sample consisted of N = 120 participants. The sampling frame for the current replication follows the same general structure, without any additional preselection criteria or known demographic quotas. Estimated participation time is 15 minutes, with compensation set at $2.00 per person (equivalent to $8.00 per hour), for a total projected cost of $191.52.
+
+### Materials
+
+##### Economic Scarcity Manipulation (Bimboola Procedure)
+Economic scarcity was manipulated an adaptation of the Bimboola paradigm (Jetten et al., 2015) to manipulate the experience of economic scarcity.  Participants were assigned to one of two economic conditions:
+
+Scarcity: participants were placed in the lowest income group, described as living on the poverty line and having difficulty living comfortably.
+
+Nonscarcity (Economic Sufficiency): participants were placed in the third income group, described as having enough money to live comfortably.
+
+In both conditions, participants imagined themselves living in Bimboola and selected a house, vehicle, phone, and leisure activity from sets of three items associated with each income group. All groups’ options were visible during the choice process.
+
+##### Behavioral Identification Form (BIF; Vallacher & Wegner, 1989)
+Construal level was measured using the BIF, one of the most widely used tools for assessing abstraction. The original BIF includes 25 items; Study 2 used two sets of 12 items each. Participants first completed 12 randomly selected items before the economic manipulation, and then completed 12 additional items afterward (only one item from the original scale was not used at any point).
+
+Each item presents an action with two descriptions: one abstract (scored 1) and one concrete (scored 0). For example, “locking a door” could be described as “securing the house” (abstract) or “putting the key in the lock” (concrete). The total number of abstract choices indexes higher-level construal.
 
 
+### Procedure
+"Participants responded to the online survey in separate cubicles. First, they completed twelve items randomly chosen from the BIF (Vallacher & Wegner, 1989). The original version of the BIF (Vallacher & Wegner, 1989) includes 25 items. In this scale, participants are presented with different actions and must choose between two options for each action. One option describes the action in concrete terms, while the other option describes the action in abstract terms. For example, participants must choose whether “locking a door” is best described as “securing the house” (abstract level; scored as 1) or “putting the key in the lock” (concrete level; scored as 0). The number of abstract descriptions selected serves as a measure of abstraction: higher scores indicate higher abstraction. Then, participants imagined hemselves living in Bimboola. The same manipulation used in Study 1 was adopted, with a slight variation in the amounts of money: the wealthiest group earned more than 100,000 Bimboolean € per month; the second group earned between 3001 and 100,000 Bimboolean € per month; the third group earned between 1201 and 3000 Bimboolean € per month; the fourth group earned between 400 and 1200 Bimboolean € per month; and the fifth group earned less than 400 Bimboolean € per month (on the poverty line). The procedure was identical to that in Study 1; participants had to choose a house, a vehicle, a phone, and a leisure activity from a group of three items associated with each economic group. Participants observed the items of all groups when making the selection. The participants in the scarcity condition were assigned to the fifth group (on the poverty line); the participants in the nonscarcity condition were assigned to the third group (enough money to live comfortably). After the Bimboola manipulation, participants completed the second part of the BIF scale, with twelve new items (only
+one randomly selected item from the original scale was not used). Finally, they provided demographic information and responded to the three manipulation check items used in Study 1."
+
+The procedures of this study were followed with the following exceptions:
+
+1. Income groups were re-adjusted to match a U.S. rather than Spanish context. The new ranges approximate U.S. household income quintiles from Household Income data. They were then converted to monthly figures and reflect meaningful distinctions in purchasing power and living standards parallel to the Spanish brackets. Group 1 corresponds to income levels below the U.S. poverty threshold; Groups 2 and 3 map onto lower- and middle-income households; Group 4 reflects upper-middle-income earners; and Group 5 captures high-income households without inflating the top category unrealistically. This update keeps the relative spacing of the original categories while adapting to US cultural contexts. The revised income brackets are as follows: 
+
+Group 1 earns less than 1,500 $ Bimbolianos (DB) per month (they are below the poverty line),
+Group 2 earns between 1,500 and 4,000 DB per month,
+Group 3 earns between 4,001 and 8,000 DB per month,
+Group 4 earns between 8,001 and 20,000 DB per month, and,
+Group 5 earns more than 20,000 DB per month.
+
+Images of housing, phone, transportation, and vacation options were also adjusted to reflect a U.S. context, borrowing images from Zillow, CarMax, and Google where applicable. 
+
+### Analysis Plan
+All analyses will follow procedures as closely aligned with the original article as possible. Data will first be inspected for incomplete responses, with participants excluded only if they did not finish the BIF measures or the manipulation checks, consistent with the original study’s practice of analyzing all voluntary participants who completed the survey. No additional exclusion rules or covariates were used in the original paper, and none will be introduced. Response text for BIF items will be cleaned by lowercasing and trimming whitespace to ensure accurate matching with the scoring dictionary.
+
+A standardized dictionary will be constructed for all 25 Behavioral Identification Form items, detailing each item’s concrete and abstract response options. Participants’ BIF responses will then be reshaped into long format and coded as abstract (1) or concrete (0). For each participant, pre-test abstraction scores will be calculated using items 1–11, and post-test abstraction scores will be calculated using items 12–24. Condition-level means and standard deviations will be summarized in tables, accompanied by visualizations illustrating changes in abstraction from pre- to post-manipulation across scarcity and nonscarcity conditions. An additional item-level table will report the percentage of abstract selections for each BIF item by condition to mirror the interpretive granularity of the original study.
+
+The manipulation checks described in the original results will be reproduced through two between-subjects ANOVAs testing whether participants in the scarcity condition rated their assigned group as poorer and less rich than those in the nonscarcity condition. These tests verify that the Bimboola manipulation induced the intended subjective perceptions of scarcity.
+
+The key analysis of interest is a mixed-design ANOVA with time (pre-test vs. post-test BIF abstraction score) as a within-subject factor and condition (scarcity vs. nonscarcity) as a between-subject factor. The condition × time interaction is the critical test of the hypothesis, as the original study reported a significant interaction showing that scarcity lowered abstraction while nonscarcity increased it. Main effects of time and condition will be examined but are not expected to differ based on the original findings. To verify baseline comparability, pre-test abstraction scores will be compared across conditions to confirm the absence of initial group differences prior to the manipulation.
+
+This analytic strategy replicates the data handling, scoring procedures, exclusion criteria, manipulation checks, and inferential tests reported in the original article.
 
 
-<!-- ### Planned Sample -->
-
-<!-- Planned sample size and/or termination rule, sampling frame, known demographics if any, preselection rules if any. -->
-
-<!-- ### Materials -->
-
-<!-- All materials - can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article. -->
-
-<!-- ### Procedure	 -->
-
-<!-- Can quote directly from original article - just put the text in quotations and note that this was followed precisely.  Or, quote directly and just point out exceptions to what was described in the original article. -->
-
-<!-- ### Analysis Plan -->
-
-<!-- Can also quote directly, though it is less often spelled out effectively for an analysis strategy section.  The key is to report an analysis strategy that is as close to the original - data cleaning rules, data exclusion rules, covariates, etc. - as possible.   -->
-
-<!-- **Clarify key analysis of interest here**  You can also pre-specify additional analyses you plan to do. -->
-
-<!-- ### Differences from Original Study -->
-
-<!-- Explicitly describe known differences in sample, setting, procedure, and analysis plan from original study.  The goal, of course, is to minimize those differences, but differences will inevitably occur.  Also, note whether such differences are anticipated to make a difference based on claims in the original article or subsequent published research on the conditions for obtaining the effect. -->
+### Differences from Original Study
+The primary differences between the original study and the planned replication involve the sample, setting, and mode of data collection. Whereas the original research was conducted with undergraduate students in Spain who completed the survey in laboratory cubicles, the replication will use a U.S.-based online sample recruited through Prolific. The study will therefore be administered entirely online rather than in person. No substantive changes will be made to the materials or procedures beyond formatting adjustments required for online delivery. Based on the nature of the manipulation and the measures, these differences are not expected to meaningfully alter the results. The original article does not identify cultural or in-person contextual factors as necessary conditions for observing the effect, and the BIF measure and Bimboola manipulation have been validated in diverse settings. Accordingly, the differences between the samples and recruitment platforms are not anticipated to influence the pattern of findings.
 
 <!-- ### Methods Addendum (Post Data Collection) -->
 
